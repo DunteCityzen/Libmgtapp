@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<div id="transactionsview_header" style="justify-content: space-between; display: flex;">
+    <h2 class="mb-4">
+        TRANSACTIONS
+    </h2>
+    <button id="transactionsview_btn" class="btn btn-success" style="height: 40px;">
+        Lease Book
+    </button>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="transactionsview">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Member Id</th>
+                <th scope="col">Book Id</th>
+                <th scope="col">Borrow date</th>
+                <th scope="col">Return date</th>
+                <th scope="col">Amount due</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <th scope="row">{{ transaction.id }}</th>
+                    <td>{{ transaction.member_id }}</td>
+                    <td>{{ transaction.book_id }}</td>
+                    <td>{{ transaction.borrow_date.date() }}</td>
+
+                    {% if transaction.return_date %}
+                        <td>{{ transaction.return_date.date() }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+
+                    {% if transaction.calc_fee() %}
+                        <td>{{ transaction.calc_fee() }}</td>
+                    {% else %}
+                        <td>0</td>
+                    {% endif %}
+
+                    {% if not transaction.return_date %}
+                        <td><a class="btn btn-warning" href="/transactions/{{ transaction.id }}/update">Update</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<button class="btn btn-success" onclick="printandReload()">Print</button>
+{% endblock %}

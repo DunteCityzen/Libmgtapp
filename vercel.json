@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+{
+    "builds": [
+        {
+            "src":"app.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "app.py"
+        }
+    ]
+=======
+{
+    "builds": [
+        {
+            "src":"app.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "app.py"
+        }
+    ]
+>>>>>>> 7d42741 (Adding priniting functionality in all views)
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<div id="booksview_header" style="justify-content: space-between; display: flex;">
+    <h2 class="mb-4">
+        BOOKS
+    </h2>
+    <button id="booksview_btn" class="btn btn-success" style="height: 40px;">
+        Add a Book
+    </button>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="booksview">
+  <table class="table">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+          <tr>
+            <th scope="row">{{ book.id }}</th>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.status }}</td>
+            <td><a class="btn btn-danger" href="/books/{{book.id}}/delete">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+</div>
+<button class="btn btn-success" onclick="printandReload()">Print</button>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<div id="membersview3" style="justify-content: space-between; display: flex;">
+    <h2 class="mb-4">
+        MEMBERS
+    </h2>
+    <button id="membersview_btn" class="btn btn-success" style="height: 40px;">
+        Add Member
+    </button>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="membersview">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Debt</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                <tr>
+                    <th scope="row">{{ member.id }}</th>
+                    <td>{{ member.name }}</td>
+                    <td>{{ member.debt }}</td>                    
+                    <td><a class="btn btn-danger" href="/members/{{ member.id }}/delete">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<button class="btn btn-success" onclick="printandReload()">Print</button>
+{% endblock %}

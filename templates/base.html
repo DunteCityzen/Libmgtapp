@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Library Mgt App</title>
+    </head>
+    <body>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <div class="wrapper d-flex align-items-stretch">
+            <nav id="sidebar">
+                <div class="p-4 pt-5">
+                    <a href="/" class="img logo rounded-circle mb-5" style="background-image: url(static/images/logo1.jpg);"></a>
+                    <h4 style="color: white;">WASOMI LIBRARY</h4>
+                    <ul class="list-unstyled components mb-5">
+                        <li>
+                            <a href="/">Books</a>
+                        </li>
+                        <li>
+                            <a href="/members">Members</a>
+                        </li>
+                        <li>
+                            <a href="/transactions">Transactions</a>
+                        </li>
+                    </ul>
+                    <div class="footer">
+                        <p>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This app is made by <a href="https://github.com/dunteCityzen" target="_blank">Duncan Ochieng</a>
+                        </p>
+                    </div>
+                </div>
+            </nav>
+            <div id="content" class="p-4 p-md-5">
+                {% block head %}{% endblock %}
+
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
