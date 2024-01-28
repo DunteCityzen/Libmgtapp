@@ -16,6 +16,7 @@ class Book(db.Model):
 
     def __repr__(self):
         return '<Book %r>' % self.id
+    
 
 
 class Member(db.Model):
@@ -176,7 +177,7 @@ def updateTransaction(id):
 
     try:
         member.debt = 0
-        book.status = 'available'
+        book.status = 'Available'
         transaction.return_date = datetime.utcnow()
         db.session.commit()
         return redirect('/transactions')
